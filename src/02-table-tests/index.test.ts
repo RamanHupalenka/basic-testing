@@ -13,8 +13,8 @@ type TestCaseWithDescription = [string, TestCasePayload];
 const testCases: TestCaseWithDescription[] = [
   ['should add two numbers', { a: 1, b: 2, action: Action.Add, expected: 3 }],
   [
-    'should substract two numbers',
-    { a: 3, b: 2, action: Action.Substract, expected: 1 },
+    'should subtract two numbers',
+    { a: 3, b: 2, action: Action.Subtract, expected: 1 },
   ],
   [
     'should multiply two numbers',
