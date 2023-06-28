@@ -19,26 +19,32 @@ describe('throwError', () => {
   test('should throw error with provided message', () => {
     const errorMessage = 'Error message';
 
-    expect(() => throwError(errorMessage)).toThrowError(errorMessage);
+    const testFn = () => throwError(errorMessage);
+
+    expect(testFn).toThrowError(errorMessage);
   });
 
   test('should throw error with default message if message is not provided', () => {
     const defaultErrorMessage = 'Oops!';
 
-    expect(() => throwError()).toThrowError(defaultErrorMessage);
+    const testFn = () => throwError();
+
+    expect(testFn).toThrowError(defaultErrorMessage);
   });
 });
 
 describe('throwCustomError', () => {
   test('should throw custom error', () => {
-    expect(() => throwCustomError()).toThrowError(MyAwesomeError);
+    const testFn = () => throwCustomError();
+
+    expect(testFn).toThrowError(MyAwesomeError);
   });
 });
 
 describe('rejectCustomError', () => {
   test('should reject custom error', async () => {
-    await expect(async () => await rejectCustomError()).rejects.toThrowError(
-      MyAwesomeError,
-    );
+    const testFn = async () => await rejectCustomError();
+
+    await expect(testFn).rejects.toThrowError(MyAwesomeError);
   });
 });
