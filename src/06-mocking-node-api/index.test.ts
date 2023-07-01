@@ -25,13 +25,13 @@ describe('doStuffByTimeout', () => {
     expect(setTimeoutSpy).toHaveBeenCalledWith(callbackSpy, timeout);
   });
 
-  test('should call callback only after timeout', () => {
+  test('should call callback only after timeout', async () => {
     const callbackSpy = jest.fn();
 
     const start = performance.now();
 
     doStuffByTimeout(callbackSpy, timeout);
-    jest.runOnlyPendingTimers();
+    await jest.runOnlyPendingTimersAsync();
 
     const end = performance.now();
 
@@ -58,15 +58,15 @@ describe('doStuffByInterval', () => {
     expect(setIntervalSpy).toHaveBeenCalledWith(callbackSpy, interval);
   });
 
-  test('should call callback multiple times after multiple intervals', () => {
+  test('should call callback multiple times after multiple intervals', async () => {
     const callbackSpy = jest.fn();
 
     const start = performance.now();
 
     doStuffByInterval(callbackSpy, timeout);
-    jest.runOnlyPendingTimers();
-    jest.runOnlyPendingTimers();
-    jest.runOnlyPendingTimers();
+    await jest.runOnlyPendingTimersAsync();
+    await jest.runOnlyPendingTimersAsync();
+    await jest.runOnlyPendingTimersAsync();
 
     const end = performance.now();
 
